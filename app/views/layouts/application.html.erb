@@ -8,9 +8,15 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+    <%= tag.meta name: "turbo-layer", value: "client-detail", src: projects_client_lists_path %>
+
+    <%= yield :head %>
   </head>
 
   <body>
-    <%= yield %>
+    <main class="m-2">
+      <%= yield %>
+    </main>
   </body>
 </html>

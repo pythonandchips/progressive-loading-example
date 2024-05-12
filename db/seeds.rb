@@ -7,3 +7,21 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+#
+
+clients = (1..50).map do
+  Client.create!(
+    name: Faker::TvShows::RuPaul.unique.queen
+  )
+end
+
+(1..400).each do
+  client = clients[SecureRandom.random_number(clients.length)]
+  Project.create!(
+    client: client,
+    name: Faker::App.name,
+    budget: SecureRandom.random_number(50_000),
+    cost: SecureRandom.random_number(100_000),
+    duration: SecureRandom.random_number(365)
+  )
+end

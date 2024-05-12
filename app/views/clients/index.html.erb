@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "client-list" do %>
+<ul class="client-list">
+  <% @clients.each do |client| %>
+    <li><%= client.name %></li>
+  <% end %>
+</ul>
+<% end %>

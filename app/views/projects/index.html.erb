@@ -1,0 +1,58 @@
+<% content_for :head do %>
+<% end %>
+
+<h1>Projects</h1>
+
+<div>
+  <%= link_to(
+    "New Project",
+    new_project_path,
+    class: "text-blue"
+  ) %>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Budget</th>
+      <th>Cost</th>
+      <th>Duration</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td>
+          <%= project.client.name %>
+          <%= turbo_layer_fragment "client-detail" do %>
+            <div>
+              <%= project.client.total_budget %>
+            </div>
+          <% end %>
+        </td>
+        <td>
+          <%= turbo_layer_fragment do %>
+            <%= project.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= turbo_layer_fragment do %>
+            <%= project.budget %>
+          <% end %>
+        </td>
+        <td>
+          <%= turbo_layer_fragment do %>
+            <%= project.cost %>
+          <% end %>
+        </td>
+        <td>
+          <%= turbo_layer_fragment do %>
+            <%= project.duration %>
+          <% end %>
+        </td>
+        <td><%= link_to("Edit", project_path(project)) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

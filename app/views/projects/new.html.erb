@@ -1,0 +1,28 @@
+<h1>New Project</h1>
+
+<%= form_with model: @project do |form| %>
+  <div class="field">
+    <%= form.label :client %>
+    <%= form.hidden_field :client, autocomplete: false %>
+    <%= turbo_frame_tag "client-list", src: clients_path %>
+  </div>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, autocomplete: false %>
+  </div>
+  <div class="field">
+    <%= form.label :budget %>
+    <%= form.number_field :budget %>
+  </div>
+  <div class="field">
+    <%= form.label :cost, "Starting cost" %>
+    <%= form.number_field :cost %>
+  </div>
+  <div class="field">
+    <%= form.label :duration %>
+    <%= form.number_field :duration %>
+  </div>
+  <div class="field">
+    <%= form.submit %>
+  </div>
+<% end %>
